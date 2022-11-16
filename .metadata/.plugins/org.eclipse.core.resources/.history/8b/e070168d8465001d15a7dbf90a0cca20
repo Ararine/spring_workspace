@@ -1,0 +1,17 @@
+package part01;
+
+public class SpringTest {
+
+		public static void main(String[] args) {
+//			MessageBeanKorea bean = new MessageBeanKorea();
+//			display(bean);
+			
+
+		}//end main()
+		
+		public static void display(MessageBeanKorea bean) {
+			bean.sayHello("스프링");
+		}
+
+	
+}//end class

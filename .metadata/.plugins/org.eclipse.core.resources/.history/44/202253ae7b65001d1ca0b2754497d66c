@@ -1,0 +1,16 @@
+package sample02;
+
+public class HelloSpring {
+
+	public static void main(String[] args) {
+		MessageBean bean = null;
+		bean = new MessageBeanKorea();
+		display(bean);
+	}//end main()
+	
+	public static void display(MessageBean bean) {
+		bean.sayHello("스프링");
+	}
+	
+}//end class
+

@@ -1,0 +1,23 @@
+package part01;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SpringTest {
+
+	public static void main(String[] args) {
+//		MessageBean bean = null;
+//		bean = MessageFactory.getInstance("ko");
+//		display(bean, "스프링");
+		
+		String path = "part01/di.xml";
+		ApplicationContext context = new ClassPathXmlApplicationContext(path);
+		MessageBean bean = (MessageBean)context.getBean("mb"); //interface로 받는다. //object이기 때문에 다운캐스팅
+		
+	}//end main()
+	
+	public static void display(MessageBean bean, String subject) {
+		bean.sayHello(subject);
+	}//end display()
+	
+}//end class
