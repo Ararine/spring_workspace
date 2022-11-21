@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="spring_06_tx"/>
 <aop-project name="spring_04_mvc"/>
 <aop-project name="spring_02_di"/>
+<aop-project name="spring_05_jdbc"/>
 <aop-project name="spring_03_aop"/>
 </aop-reference-model>
