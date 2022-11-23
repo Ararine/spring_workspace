@@ -85,6 +85,35 @@ public class BoardController {
 		
 	}//end writeProMethod()
 	
+	@RequestMapping(value="/update.sb", method=RequestMethod.GET)
+	public ModelAndView updateMethod(int num, int currentPage, ModelAndView mav) {
+		mav.addObject("dto", service.updateSelectProcess(num));
+		mav.addObject("currentPage", currentPage);
+		mav.setViewName("board/update");	
+		return mav;
+	}//end updateMethod()
+	
+	@RequestMapping(value="/update.sb", method=RequestMethod.POST)
+	public String updateProMethod(BoardDTO dto, int currentPage, HttpServletRequest request) {
+		MultipartFile file = dto.getFilename();
+		if(!file.isEmpty()) {
+			UUID random = saveCopyFile(file, request);
+			dto.setUpload(random + "_" + file.getOriginalFilename());
+		}
+		service.updateProcess(dto, urlPath(request));
+		return "redirect:/list.sb?currentPage=" + currentPage;
+	}//end updateProMethod()
+	
+	@RequestMapping(value="/delete.sb")
+	public String deleteProMethod(int num, int currentPage, HttpServletRequest request) {
+		service.deleteProcess(num, urlPath(request));
+		
+		int totalRecord = service.countProcess();
+		this.pdto = new PageDTO(this.currentPage, totalRecord);
+		
+		return "redirect:/list.sb?currentPage=" + this.pdto.getCurrentPage();
+	}//end deleteProMethod()
+	
 	private UUID saveCopyFile(MultipartFile file, HttpServletRequest request) {
 		String fileName = file.getOriginalFilename();
 		

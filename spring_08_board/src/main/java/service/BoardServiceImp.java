@@ -1,5 +1,6 @@
 package service;
 
+import java.io.File;
 import java.util.List;
 
 import dao.BoardDAO;
@@ -32,6 +33,7 @@ public class BoardServiceImp implements BoardService{
 	public void insertProcess(BoardDTO dto) {
 		//답변글이면
 		if(dto.getRef() != 0) {
+			dao.reStepCount(dto);
 			dto.setRe_step(dto.getRe_step() + 1);
 			dto.setRe_level(dto.getRe_level() + 1);
 		}
@@ -46,26 +48,42 @@ public class BoardServiceImp implements BoardService{
 
 	@Override
 	public void reStepProcess(BoardDTO dto) {
-		// TODO Auto-generated method stub
-		
+		if(dto.getRef() != 0) {
+			dao.reStepCount(dto);
+		}
+		dao.reStepCount(dto);
 	}
 
 	@Override
 	public BoardDTO updateSelectProcess(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.content(num);
 	}
 
 	@Override
 	public void updateProcess(BoardDTO dto, String urlpath) {
-		// TODO Auto-generated method stub
+		String filename = dto.getUpload();
 		
+		//수정한 파일 있으면
+		if(filename != null) {
+			String path = dao.getFile(dto.getNum());
+			//기존 첨부파일이 있으면
+			if(path != null) {
+				File file = new File(urlpath, path);
+				file.delete();
+			}
+		}
+		dao.update(dto);
 	}
 
 	@Override
 	public void deleteProcess(int num, String urlpath) {
-		// TODO Auto-generated method stub
-		
+		String path = dao.getFile(num);
+		//num컬럼에 해당하는 첨부파일이 있으면
+		if(path!=null) {
+			File fe = new File(urlpath, path);
+			fe.delete();
+		}
+		dao.delete(num);
 	}
 
 	@Override
