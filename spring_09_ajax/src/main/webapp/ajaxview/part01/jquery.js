@@ -7,7 +7,7 @@ function process() {
     type: 'GET',
     dataType: 'text',
     url: 'ajaxview/part01/sample.txt',
-    success: viewMessage,
+    success: viewMessage
   });
 }
 

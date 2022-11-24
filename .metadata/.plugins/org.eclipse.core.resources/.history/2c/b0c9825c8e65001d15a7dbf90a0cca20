@@ -1,5 +1,0 @@
-package sample03_exam;
-
-public interface Service {
-
-}
