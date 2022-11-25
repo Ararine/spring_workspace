@@ -12,6 +12,7 @@ function process() {
 	});	
 }
 
+
 function viewMessage(res){
 	$('#wrap table').empty();
 	$('#wrap table').append(`<tr><th>employee_id</th><th>first_name</th><th>salary</th></tr>`);

@@ -23,7 +23,7 @@ public class SearchDaumController {
 
 	}
 
-	@RequestMapping(value = "/booksearch.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/booksearch.do", method = RequestMethod.GET) 
 	public String form() {
 		return "part04/form";
 	}// end form()
