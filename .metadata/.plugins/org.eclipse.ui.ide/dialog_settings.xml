@@ -114,6 +114,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="F:\spring_workspace\spring_13_scheduled"/>
+			<item value="C:\Users\EZEN\Downloads\spring_13_scheduled"/>
 			<item value="F:\spring_workspace\spring10_map\spring10_map"/>
 		</list>
 	</section>
