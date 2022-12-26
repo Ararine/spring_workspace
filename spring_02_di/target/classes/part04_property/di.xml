@@ -22,7 +22,7 @@
 	 
 	 <!-- 
 	 	Random ran = new Random();
-	 	ServiceIMp svc2 = new ServiceImp();
+	 	ServiceImp svc2 = new ServiceImp();
 	 	svc2.setRan(ran);
 	  -->
 	  

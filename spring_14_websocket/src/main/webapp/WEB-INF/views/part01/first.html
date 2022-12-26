@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body style="margin:0;">
+<div id="map" style="width:100vw;height:100vh;"></div>
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=148fbcd3f2811595312c6f6f16308a9b&libraries=services"></script>
+<script type="text/javascript">
+/*
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	level: 3 //지도의 레벨(확대, 축소 정도)
+};
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+*/
+</script>
+<script type="text/javascript">
+var places = new kakao.maps.services.Places();
+var callback = function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+    	var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+    	var s = "";
+    	for (var i = 0; i < result.length; i++) {
+    		const category = result[i].category_name.split(">");
+    		var category_name;
+    		if (category.length > 2)
+    			category_name = category[1].trim() + " (" + category[2].trim() + ")";
+    		else
+    			category_name = category[1].trim();
+    		s += result[i].place_name + " - " + category_name + " - " + result[i].place_url + "<br>";
+    	}
+    	container.innerHTML = s;
+    }
+};
+
+// 공공기관 코드 검색
+places.categorySearch('FD6', callback, {
+    // Map 객체를 지정하지 않았으므로 좌표객체를 생성하여 넘겨준다.
+    location: new kakao.maps.LatLng(37.564968, 126.939909)
+});
+</script>
+</body>
+</html>

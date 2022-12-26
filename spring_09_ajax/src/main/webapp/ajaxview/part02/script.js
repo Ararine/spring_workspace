@@ -22,7 +22,7 @@ function process() {
 	//4. 서버에 요청을 한다.
 	httpRequest.send('name=' + document.querySelector("#name").value);	
 }//end process()
-
+--		
 //서버로부터 정상적으로 응답을 받았을 때 수행할 함수 정의
 function viewMessage() {
 	if(httpRequest.readyState==4 && httpRequest.status==200) {
